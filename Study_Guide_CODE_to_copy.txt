@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Video Production Study Guide: Shot Detectives &amp; The Critic’s Chair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Big+Shoulders+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#14254A; --navy-2:#1E3566; --gold:#E3B23C; --gold-ink:#8A6408;
+  --teal:#1C7F82; --teal-soft:#DDF0F0; --red:#B83636; --red-soft:#F7E2E0;
+  --bg:#F3F5F9; --surface:#FFFFFF; --surface-2:#E9EDF4; --ink:#17202F; --muted:#4D586B; --line:#CDD4E0;
+  --ok:#1F7A45; --ok-soft:#DFF2E6; --warn:#9A5B00; --warn-soft:#FFF1D6; --bad:#B23A2B; --bad-soft:#FBE3DF;
+  --accent:var(--navy); --accent-soft:var(--surface-2);
+  --display:"Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", Verdana, Arial, sans-serif;
+  --fs:1.0625rem;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1626; --surface:#16213A; --surface-2:#1F2C49; --ink:#EEF1F7; --muted:#AEB8CC; --line:#33415F;
+    --teal-soft:#123B3D; --red-soft:#3E1C1C; --ok-soft:#173826; --warn-soft:#3B2C10; --bad-soft:#3E1D18;
+    --gold-ink:#F0C862; --accent-soft:var(--surface-2);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1626; --surface:#16213A; --surface-2:#1F2C49; --ink:#EEF1F7; --muted:#AEB8CC; --line:#33415F;
+  --teal-soft:#123B3D; --red-soft:#3E1C1C; --ok-soft:#173826; --warn-soft:#3B2C10; --bad-soft:#3E1D18;
+  --gold-ink:#F0C862; color-scheme:dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--fs);line-height:1.55}
+body.big{--fs:1.25rem}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--navy)}
+img,svg{max-width:100%}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+a{color:inherit}
+
+/* masthead */
+.mast{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--navy);color:#fff;border-bottom:4px solid var(--gold)}
+.mast-in{max-width:1120px;margin:0 auto;padding:.6rem 1rem .5rem;display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:#fff;margin-right:auto}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{font-family:var(--display);font-weight:800;font-size:1.45rem;letter-spacing:.01em;line-height:1}
+.brand small{display:block;font-size:.78rem;color:#C9D3E6;line-height:1.2}
+.tabs{display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:none;width:100%;order:3}
+.tabs a{white-space:nowrap;text-decoration:none;color:#DCE3F1;padding:.45rem .8rem;border-radius:8px 8px 0 0;font-weight:700;font-size:.95rem}
+.tabs a[aria-current="page"]{background:var(--gold);color:var(--navy)}
+.tabs a:hover{color:#fff}
+.tabs a[aria-current="page"]:hover{color:var(--navy)}
+.tools{display:flex;gap:.4rem;flex-wrap:wrap}
+.tog{background:transparent;border:1.5px solid #6F83AC;color:#fff;border-radius:999px;padding:.25rem .7rem;font-size:.85rem;cursor:pointer}
+.tog[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:700}
+@media (min-width:860px){.tabs{width:auto;order:0}}
+
+main{max-width:1120px;margin:0 auto;padding:1.25rem 1rem 3rem}
+.view{display:none}.view.on{display:block}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.05;margin:0 0 .5rem;letter-spacing:.005em}
+h1{font-size:clamp(2.4rem,6vw,4rem)}
+h2{font-size:clamp(1.7rem,3.6vw,2.4rem)}
+h3{font-size:1.45rem}
+p{margin:.3rem 0 .8rem;max-width:72ch}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:10px;padding:.6rem 1rem;font-weight:700;cursor:pointer;background:var(--accent);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn.gold{background:var(--gold);color:var(--navy)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.say{border:0;background:var(--surface-2);color:var(--ink);border-radius:999px;width:2.1rem;height:2.1rem;display:inline-grid;place-items:center;cursor:pointer;flex:none;font-size:1rem}
+.say:hover{background:var(--gold);color:var(--navy)}
+.no-speech .say{display:none}
+
+/* home */
+.home-hero{display:grid;gap:1.5rem;grid-template-columns:1fr;align-items:center;margin:.5rem 0 2rem}
+.home-hero p{font-size:1.15rem}
+.reel{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;background:var(--navy);padding:14px 10px;border-radius:6px;position:relative}
+.reel::before,.reel::after{content:"";position:absolute;left:8px;right:8px;height:6px;background:repeating-linear-gradient(90deg,var(--bg) 0 10px,transparent 10px 22px)}
+.reel::before{top:4px}.reel::after{bottom:4px}
+.reel svg{display:block;width:100%;aspect-ratio:16/9;border-radius:2px;background:#9cc}
+.reel span{display:block;color:var(--gold);font-weight:700;font-size:.72rem;text-align:center;margin-top:3px}
+@media (min-width:860px){.home-hero{grid-template-columns:1.1fr 1fr}}
+.tickets{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:760px){.tickets{grid-template-columns:1fr 1fr}}
+.ticket{display:block;text-decoration:none;color:inherit;background:var(--surface);border:2px solid var(--line);border-left:12px solid var(--tc);border-radius:14px;padding:1.2rem 1.3rem;position:relative}
+.ticket:hover{border-color:var(--tc)}
+.ticket h2{color:var(--tc)}
+:root[data-theme="dark"] .ticket h2, .ticket h2{filter:none}
+.ticket .q{font-style:italic}
+.ticket .go{font-weight:700;margin-top:.6rem;display:inline-block;border-bottom:3px solid var(--gold)}
+.howto{margin-top:2rem;background:var(--surface);border-radius:14px;padding:1.2rem 1.3rem;border:2px dashed var(--line)}
+.steps-mini{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-top:.6rem}
+.steps-mini div{background:var(--surface-2);border-radius:10px;padding:.6rem .8rem}
+.steps-mini b{display:block;font-family:var(--display);font-size:1.3rem}
+
+/* unit */
+.unit-head{background:var(--accent);color:#fff;border-radius:16px;padding:1.2rem 1.3rem;margin-bottom:1rem;position:relative;overflow:hidden}
+.unit-head h1{color:#fff;margin-bottom:.2rem}
+.unit-head .dq{font-size:1.15rem;max-width:60ch;margin:0}
+.unit-head .dq b{color:var(--gold)}
+.ican{margin-top:.9rem;background:rgba(255,255,255,.1);border-radius:10px;padding:.5rem .9rem}
+.ican summary{cursor:pointer;font-weight:700}
+.ican ul{margin:.4rem 0 .2rem;padding-left:1.2rem}
+.ican li{margin:.2rem 0}
+.stepnav{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:.3rem;margin-bottom:1rem;scrollbar-width:thin}
+.stepnav button{flex:none;display:flex;align-items:center;gap:.5rem;border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:.45rem .8rem .45rem .5rem;cursor:pointer;font-weight:700}
+.stepnav button .n{display:grid;place-items:center;width:1.8rem;height:1.8rem;border-radius:50%;background:var(--surface-2);font-family:var(--display);font-size:1.1rem}
+.stepnav button[aria-selected="true"]{border-color:var(--accent);background:var(--accent);color:#fff}
+.stepnav button[aria-selected="true"] .n{background:var(--gold);color:var(--navy)}
+.stepnav button .tier{font-weight:400;font-size:.8rem;opacity:.85}
+.panel{background:var(--surface);border-radius:16px;padding:1.2rem;border:1px solid var(--line)}
+.panel-intro{display:flex;gap:.6rem;align-items:flex-start;margin-bottom:.8rem}
+.panel-intro p{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0 1rem}
+.chip{border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:.3rem .8rem;cursor:pointer;font-weight:700;font-size:.92rem}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* flashcards */
+.cards{display:grid;gap:.9rem;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.fc{perspective:900px;min-height:270px;cursor:pointer;border:0;background:none;padding:0;text-align:left}
+.fc-in{position:relative;width:100%;height:100%;min-height:270px;transition:transform .45s;transform-style:preserve-3d}
+.fc.flip .fc-in{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:.9rem;display:flex;flex-direction:column;border:2px solid var(--line);background:var(--surface)}
+.fc-back{transform:rotateY(180deg);background:var(--accent-soft);border-color:var(--accent)}
+.fc .cat{font-size:.8rem;font-weight:700;color:var(--muted)}
+.fc .term{font-family:var(--display);font-weight:800;font-size:1.75rem;line-height:1;margin:.2rem 0}
+.fc .es{color:var(--gold-ink);font-style:italic;font-size:.95rem;display:none}
+body.es .fc .es{display:block}
+.fc .pic{margin-top:auto;border-radius:6px;overflow:hidden;background:#9cc;aspect-ratio:16/9}
+.fc .pic svg{display:block;width:100%;height:100%}
+.fc .pic.plain{background:transparent;aspect-ratio:auto;display:grid;place-items:center;font-size:2.6rem;padding:.4rem 0}
+.fc .hint{font-size:.78rem;color:var(--muted);margin-top:.4rem}
+.fc-back .def{font-weight:700;font-size:1.05rem}
+.fc-back .eff{margin-top:.4rem}
+.fc-back .eff b{color:var(--gold-ink)}
+.fc .seen{position:absolute;top:.6rem;right:.6rem;font-size:.75rem;font-weight:700;color:var(--ok);background:var(--ok-soft);border-radius:999px;padding:.05rem .5rem}
+.fc-row{display:flex;justify-content:space-between;align-items:center;gap:.4rem}
+@media (prefers-reduced-motion:reduce){.fc-in{transition:none}}
+
+/* match */
+.match{display:grid;grid-template-columns:1fr 1.5fr;gap:.7rem}
+.match .col{display:flex;flex-direction:column;gap:.5rem}
+.mt{border:2px solid var(--line);background:var(--surface);border-radius:10px;padding:.6rem .7rem;text-align:left;cursor:pointer;min-height:3rem}
+.mt.term-b{font-family:var(--display);font-size:1.3rem;font-weight:800}
+.mt.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 2px var(--accent)}
+.mt.done{border-color:var(--ok);background:var(--ok-soft);color:var(--ok);cursor:default}
+.mt.oops{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.matchbar{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between;margin-bottom:.8rem}
+.stat{font-weight:700;background:var(--surface-2);border-radius:999px;padding:.25rem .8rem}
+
+/* quiz */
+.tierbar{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.tierbar .chip small{font-weight:400}
+.qcard{border:2px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.9rem;background:var(--surface)}
+.qtop{display:flex;gap:.6rem;align-items:flex-start}
+.qnum{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1;min-width:1.7rem}
+.qtext{font-weight:700;flex:1}
+.opts{display:grid;gap:.45rem;margin:.7rem 0 0 2.3rem}
+.opt{border:2px solid var(--line);background:var(--surface);border-radius:10px;padding:.5rem .75rem;text-align:left;cursor:pointer}
+.opt:hover{border-color:var(--accent)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);text-decoration:line-through;text-decoration-thickness:1px}
+.fb{margin:.6rem 0 0 2.3rem;border-radius:10px;padding:.55rem .8rem;font-size:.97rem}
+.fb.good{background:var(--ok-soft)}.fb.try{background:var(--warn-soft)}
+.fb b{display:block}
+.tier-note{background:var(--surface-2);border-radius:10px;padding:.6rem .9rem;margin-bottom:1rem}
+
+/* viewfinder */
+.vf{position:relative;border-radius:8px;overflow:hidden;background:#000;aspect-ratio:16/9}
+.vf svg{display:block;width:100%;height:100%}
+.vf .rec{position:absolute;top:.85rem;left:2.4rem;color:#fff;font-size:.8rem;font-weight:700;display:flex;align-items:center;gap:.35rem;text-shadow:0 1px 2px #000}
+.vf .rec i{width:.6rem;height:.6rem;border-radius:50%;background:#e33;display:block}
+.vf .corner{position:absolute;width:22px;height:22px;border:3px solid rgba(255,255,255,.85)}
+.vf .c1{top:10px;left:10px;border-right:0;border-bottom:0}.vf .c2{top:10px;right:10px;border-left:0;border-bottom:0}
+.vf .c3{bottom:10px;left:10px;border-right:0;border-top:0}.vf .c4{bottom:10px;right:10px;border-left:0;border-top:0}
+.vf .slate{position:absolute;bottom:.5rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.6);color:#fff;font-size:.8rem;padding:.15rem .6rem;border-radius:999px;white-space:nowrap}
+
+/* mixer */
+.mixer{display:grid;gap:1.1rem;grid-template-columns:1fr}
+@media (min-width:900px){.mixer{grid-template-columns:1.1fr 1fr}}
+.drawn{display:flex;gap:.6rem;flex-wrap:wrap;margin:.5rem 0 1rem}
+.drawcard{flex:1 1 180px;border-radius:12px;padding:.7rem .9rem;border:2px solid var(--line);background:var(--surface-2)}
+.drawcard small{display:block;font-weight:700;color:var(--muted)}
+.drawcard b{font-size:1.15rem}
+.drawcard.mood{border-color:var(--gold);background:var(--warn-soft)}
+.pick h4{margin:.6rem 0 .2rem;font-size:1rem}
+.angle-dia{background:var(--surface-2);border-radius:10px;padding:.4rem;margin-top:.6rem}
+.angle-dia svg{display:block;width:100%;height:auto;max-height:150px}
+.verdict{margin-top:1rem}
+.fitrow{display:flex;gap:.6rem;align-items:flex-start;padding:.5rem .7rem;border-radius:10px;margin:.35rem 0}
+.fitrow.strong{background:var(--ok-soft)}.fitrow.maybe{background:var(--warn-soft)}
+.fitrow .ic{font-weight:900;min-width:1.4rem}
+.meter{height:14px;border-radius:999px;background:var(--surface-2);overflow:hidden;margin:.3rem 0 .2rem}
+.meter i{display:block;height:100%;background:var(--gold);transition:width .4s}
+textarea{width:100%;min-height:5.5rem;border:2px solid var(--line);border-radius:10px;padding:.6rem .7rem;background:var(--surface);resize:vertical;line-height:1.45}
+textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--gold)}
+input[type=text]{border:2px solid var(--line);border-radius:10px;padding:.5rem .7rem;background:var(--surface);width:100%}
+.wc{font-size:.85rem;color:var(--muted);margin-top:.2rem}
+
+/* critic apply */
+.subnav{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.sortrow{display:grid;grid-template-columns:1fr;gap:.4rem;border:2px solid var(--line);border-radius:12px;padding:.7rem .8rem;margin-bottom:.6rem}
+@media (min-width:700px){.sortrow{grid-template-columns:1fr auto;align-items:center}}
+.sortrow .line{font-size:1.02rem}
+.letters{display:flex;gap:.3rem;flex-wrap:wrap}
+.letters button{width:2.6rem;height:2.6rem;border-radius:10px;border:2px solid var(--line);background:var(--surface);font-family:var(--display);font-size:1.4rem;font-weight:800;cursor:pointer}
+.letters button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.sortrow.good{border-color:var(--ok);background:var(--ok-soft)}.sortrow.bad{border-color:var(--bad);background:var(--bad-soft)}
+.sortrow .why{grid-column:1/-1;font-size:.93rem}
+select{border:2px solid var(--line);border-radius:10px;padding:.45rem .6rem;background:var(--surface)}
+.score-legend{display:grid;gap:.4rem;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin:.3rem 0 1rem}
+.score-legend div{background:var(--surface-2);border-radius:10px;padding:.45rem .7rem;font-size:.92rem}
+.score-legend b{font-family:var(--display);font-size:1.5rem;color:var(--accent);margin-right:.35rem}
+.scriptbox{border:2px solid var(--line);border-radius:12px;padding:.7rem .8rem;margin-bottom:.7rem}
+.scriptbox label{font-weight:700;display:flex;gap:.5rem;align-items:baseline}
+.scriptbox label b{font-family:var(--display);font-size:1.5rem;color:var(--accent)}
+.scriptbox .starter{font-size:.9rem;color:var(--muted);font-style:italic;margin:.1rem 0 .35rem}
+.checks{list-style:none;padding:0;margin:.4rem 0}
+.checks li{padding:.3rem 0;display:flex;gap:.5rem}
+.checks li .ic{min-width:1.3rem;font-weight:900}
+.checks li.yes .ic{color:var(--ok)}.checks li.no .ic{color:var(--warn)}
+.timer{font-family:var(--display);font-size:2.6rem;font-weight:800;line-height:1}
+.sticky-sum{background:var(--surface-2);border-radius:12px;padding:.8rem 1rem}
+@media (min-width:900px){.script-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1rem;align-items:start}.sticky-sum{position:sticky;top:150px}}
+
+/* critics people */
+.people{display:grid;gap:.7rem;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));margin-top:1rem}
+.person{border:2px solid var(--line);border-radius:12px;padding:.7rem .8rem;background:var(--surface)}
+.person b{font-family:var(--display);font-size:1.35rem;display:block;line-height:1.05}
+.person small{color:var(--muted);font-weight:700}
+.datastrip{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin:.6rem 0 1rem}
+.datastrip div{border-radius:12px;padding:.7rem .9rem;background:var(--surface-2)}
+.datastrip b{display:block;font-family:var(--display);font-size:2rem;line-height:1;color:var(--accent)}
+
+/* deeper */
+.deep{border:2px solid var(--gold);border-radius:14px;padding:1rem;margin-bottom:1rem;background:var(--surface)}
+.deep h3{display:flex;gap:.5rem;align-items:center}
+.deep ul{margin:.3rem 0 .7rem;padding-left:1.2rem}
+.deep .row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;align-items:center}
+
+/* score card */
+.sc-grid{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:860px){.sc-grid{grid-template-columns:1fr 1fr}}
+.sc{background:var(--surface);border-radius:16px;padding:1rem 1.1rem;border-top:8px solid var(--tc);border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sc table{width:100%;border-collapse:collapse;margin:.4rem 0 .8rem}
+.sc td{padding:.35rem .2rem;border-bottom:1px solid var(--line)}
+.sc td:last-child{text-align:right;font-weight:700}
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin:.3rem 0 .8rem}
+.badge{display:flex;align-items:center;gap:.4rem;border-radius:999px;padding:.25rem .8rem .25rem .3rem;font-weight:700;font-size:.9rem;background:var(--surface-2);color:var(--muted)}
+.badge i{width:1.7rem;height:1.7rem;border-radius:50%;display:grid;place-items:center;background:var(--line);font-style:normal}
+.badge.got{background:var(--warn-soft);color:var(--ink)}
+.badge.got i{background:var(--gold);color:var(--navy)}
+.conf{display:grid;grid-template-columns:1fr auto;gap:.4rem;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--line)}
+.lights{display:flex;gap:.3rem}
+.lights button{width:2.1rem;height:2.1rem;border-radius:50%;border:3px solid var(--line);cursor:pointer;background:var(--surface)}
+.lights button.g{--c:#2E9E5B}.lights button.y{--c:#E3B23C}.lights button.r{--c:#D04A3A}
+.lights button[aria-pressed="true"]{background:var(--c);border-color:var(--c)}
+.namebox{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin:.5rem 0 1rem}
+.namebox input{max-width:320px}
+
+/* teacher */
+.tg table{width:100%;border-collapse:collapse;margin:.5rem 0 1.2rem;font-size:.95rem}
+.tg th{background:var(--navy);color:#fff;text-align:left;padding:.5rem .6rem}
+.tg td{padding:.5rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+.tg tr:nth-child(even) td{background:var(--surface-2)}
+.tg .wrap{overflow-x:auto}
+.tg h2{margin-top:1.4rem}
+.note{background:var(--warn-soft);border-left:6px solid var(--gold);border-radius:8px;padding:.6rem .9rem;margin:.6rem 0 1rem}
+
+footer{max-width:1120px;margin:0 auto;padding:0 1rem 2rem;color:var(--muted);font-size:.9rem;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 1rem);transform:translateX(-50%);background:var(--navy);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .25s;z-index:20;border:2px solid var(--gold)}
+.toast.show{opacity:1}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+
+<!-- Shared scene used by every viewfinder -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7EC3E6"/><stop offset="1" stop-color="#D6EEF7"/></linearGradient>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5BAA5E"/><stop offset="1" stop-color="#3C7F45"/></linearGradient>
+    <g id="bgArt">
+      <rect x="-800" y="0" width="3200" height="900" fill="url(#sky)"/>
+      <circle cx="1310" cy="170" r="70" fill="#FFD866"/>
+      <g fill="#fff" opacity=".9"><ellipse cx="380" cy="150" rx="90" ry="28"/><ellipse cx="440" cy="130" rx="60" ry="30"/><ellipse cx="960" cy="230" rx="70" ry="20"/><ellipse cx="-200" cy="180" rx="80" ry="24"/><ellipse cx="1900" cy="140" rx="90" ry="26"/></g>
+      <path d="M-800 640 Q-400 520 0 620 T 700 600 T 1500 590 T 2400 610 V900 H-800Z" fill="#8CBF8A"/>
+      <rect x="-800" y="700" width="3200" height="200" fill="url(#grass)"/>
+      <g transform="translate(1040 520)"><rect width="260" height="190" fill="#C9A26B"/><rect x="-10" y="-14" width="280" height="22" fill="#14254A"/><rect x="104" y="110" width="52" height="80" fill="#14254A"/><g fill="#E9F3F8"><rect x="22" y="40" width="44" height="38"/><rect x="194" y="40" width="44" height="38"/><rect x="22" y="110" width="44" height="38"/><rect x="194" y="110" width="44" height="38"/></g><rect x="128" y="-90" width="4" height="78" fill="#555"/><path d="M132 -90 h46 l-10 13 l10 13 h-46z" fill="#E3B23C"/></g>
+      <g transform="translate(300 470)"><rect x="-14" y="120" width="28" height="140" fill="#6B4A2E"/><circle cx="0" cy="80" r="90" fill="#2F7D3E"/><circle cx="-55" cy="120" r="55" fill="#3A8C48"/><circle cx="60" cy="115" r="58" fill="#3A8C48"/></g>
+      <g transform="translate(-420 520)"><rect x="-10" y="90" width="20" height="110" fill="#6B4A2E"/><circle cx="0" cy="70" r="70" fill="#2F7D3E"/></g>
+      <g transform="translate(1750 500)"><rect x="-12" y="110" width="24" height="110" fill="#6B4A2E"/><circle cx="0" cy="80" r="80" fill="#2F7D3E"/></g>
+      <path d="M-800 772 H2400" stroke="#2E6A37" stroke-width="3" opacity=".4"/>
+    </g>
+    <g id="kid">
+      <ellipse cx="800" cy="762" rx="40" ry="6" fill="#000" opacity=".2"/>
+      <rect x="784" y="676" width="14" height="84" rx="4" fill="#14254A"/>
+      <rect x="802" y="676" width="14" height="84" rx="4" fill="#14254A"/>
+      <ellipse cx="788" cy="760" rx="11" ry="5" fill="#222"/><ellipse cx="812" cy="760" rx="11" ry="5" fill="#222"/>
+      <rect x="764" y="604" width="13" height="62" rx="6" fill="#E3B23C"/>
+      <rect x="823" y="604" width="13" height="62" rx="6" fill="#E3B23C"/>
+      <circle cx="770" cy="668" r="6" fill="#B97A4C"/><circle cx="830" cy="668" r="6" fill="#B97A4C"/>
+      <rect x="774" y="598" width="52" height="86" rx="13" fill="#E3B23C"/>
+      <path d="M792 600 L800 612 L808 600" fill="#14254A"/>
+      <rect x="793" y="580" width="14" height="20" rx="3" fill="#B97A4C"/>
+      <circle cx="800" cy="566" r="22" fill="#C68B59"/>
+      <path d="M777 566 Q776 540 800 541 Q824 540 823 566 Q818 552 800 552 Q782 552 777 566Z" fill="#2B1D14"/>
+      <ellipse cx="792" cy="564" rx="4.4" ry="3.1" fill="#fff"/><ellipse cx="808" cy="564" rx="4.4" ry="3.1" fill="#fff"/>
+      <circle cx="792.6" cy="564.2" r="2.1" fill="#3B2412"/><circle cx="808.6" cy="564.2" r="2.1" fill="#3B2412"/>
+      <circle cx="792.6" cy="564.2" r="1" fill="#000"/><circle cx="808.6" cy="564.2" r="1" fill="#000"/>
+      <circle cx="793.3" cy="563.4" r=".6" fill="#fff"/><circle cx="809.3" cy="563.4" r=".6" fill="#fff"/>
+      <rect x="787" y="557.6" width="10" height="1.7" rx=".85" fill="#2B1D14"/><rect x="803" y="557.6" width="10" height="1.7" rx=".85" fill="#2B1D14"/>
+      <path d="M800 566 q-1.6 4 0.6 4.6" fill="none" stroke="#9A6440" stroke-width="1" stroke-linecap="round"/>
+      <path d="M794.5 575.5 Q800 579.5 805.5 575.5" fill="none" stroke="#6E3B22" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="778" cy="567" r="3" fill="#B97A4C"/><circle cx="822" cy="567" r="3" fill="#B97A4C"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="mast">
+  <div class="mast-in">
+    <a class="brand" href="#home" aria-label="Study guide home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="11" width="26" height="20" rx="4" fill="#E3B23C"/><path d="M29 17 L37 12 V30 L29 25Z" fill="#E3B23C"/><circle cx="16" cy="21" r="6" fill="#14254A"/><circle cx="16" cy="21" r="2.5" fill="#E3B23C"/></svg>
+      <span><b>Video Production Study Guide</b><small>Moore Middle School, Celina ISD</small></span>
+    </a>
+    <div class="tools">
+      <button class="tog" id="tEs" aria-pressed="false" title="Show Spanish words on flashcards">Español</button>
+      <button class="tog" id="tBig" aria-pressed="false" title="Make the text bigger">Bigger text</button>
+    </div>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#home">Start here</a>
+      <a href="#shot">Shot Detectives</a>
+      <a href="#critic">The Critic’s Chair</a>
+      <a href="#card">My Score Card</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section class="view" id="v-home">
+    <div class="home-hero">
+      <div>
+        <h1>Study like a filmmaker.</h1>
+        <p>This guide helps you review two units: <b>Shot Detectives</b> (how camera and sound choices make us feel) and <b>The Critic’s Chair</b> (how film critics judge movies and how you can, too).</p>
+        <p class="muted">Tap the 🔊 button on anything to hear it read out loud. Your work saves on this device.</p>
+      </div>
+      <div class="reel" id="homeReel" aria-label="The same scene shown in five shot sizes"></div>
+    </div>
+    <div class="tickets">
+      <a class="ticket" href="#shot" style="--tc:var(--teal)">
+        <h2>Shot Detectives</h2>
+        <p class="q">How do filmmakers make us feel something without telling us how to feel?</p>
+        <span class="go">Open the case</span>
+      </a>
+      <a class="ticket" href="#critic" style="--tc:var(--red)">
+        <h2>The Critic’s Chair</h2>
+        <p class="q">What makes a review more than just an opinion?</p>
+        <span class="go">Take your seat</span>
+      </a>
+    </div>
+    <div class="howto">
+      <h3>How each unit works</h3>
+      <p>Each unit has five steps. Go in order. Each step asks you to think a little deeper than the one before.</p>
+      <div class="steps-mini">
+        <div><b>1. Learn It</b>Flip the word cards.</div>
+        <div><b>2. Match It</b>Race to match words and meanings.</div>
+        <div><b>3. Check It</b>Answer Required, Stretch, and Advanced questions.</div>
+        <div><b>4. Apply It</b>Use what you know to make something.</div>
+        <div><b>5. Go Deeper</b>Advanced Challenges for big thinkers.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="v-shot"></section>
+  <section class="view" id="v-critic"></section>
+
+  <!-- SCORE CARD -->
+  <section class="view" id="v-card">
+    <h1>My Score Card</h1>
+    <p>Fill in your name, rate yourself on each “I can,” then show this page to your teacher or take a screenshot for your exit ticket.</p>
+    <div class="namebox">
+      <label for="stuName"><b>My name</b></label>
+      <input type="text" id="stuName" autocomplete="off" placeholder="First and last name">
+      <span class="muted" id="cardDate"></span>
+    </div>
+    <div class="sc-grid" id="scGrid"></div>
+    <p style="margin-top:1.5rem"><button class="btn ghost" id="resetAll">Clear all my work on this device</button></p>
+  </section>
+
+</main>
+<footer>Know their story. Support their journey.</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- tiny helpers ---------- */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const words=t=>(t.trim().match(/\S+/g)||[]).length;
+const reduceMotion=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canSpeak='speechSynthesis' in window;
+if(!canSpeak) document.body.classList.add('no-speech');
+function speak(t){ if(!canSpeak) return; try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); u.rate=.92; u.lang='en-US'; speechSynthesis.speak(u);}catch(e){} }
+function sayBtn(t){ return `<button class="say" type="button" data-say="${esc(t)}" aria-label="Read this out loud">🔊</button>`; }
+document.addEventListener('click',e=>{const b=e.target.closest('[data-say]'); if(b){e.stopPropagation(); speak(b.dataset.say);}},true);
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),1800);}
+async function copyText(t){try{await navigator.clipboard.writeText(t);toast('Copied');}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast('Copied');}catch(_){toast('Select the text and copy it');}a.remove();}}
+
+/* ---------- saved progress ---------- */
+const KEY='mms-vp-studyguide-v1';
+function blankUnit(){return{flipped:[],matchBest:null,matchRounds:0,quiz:{},apply:{},deeper:{},conf:{},step:'learn'}}
+let S;
+try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){S=null}
+if(!S||!S.shot) S={name:'',es:false,big:false,shot:blankUnit(),critic:blankUnit()};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+/* ---------- viewfinder ---------- */
+const CROPS={EWS:[0,0,1600,900],WS:[533,468,534,300.4],MS:[656,522,288,162],CU:[736,530,128,72],ECU:[782,553,36,20.25]};
+function vb(c){return c.join(' ')}
+function frameSVG(size,extra=''){return `<svg viewBox="${vb(CROPS[size])}" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="bgg"><use href="#bgArt"/></g><use href="#kid"/>${extra}</svg>`}
+function angleSVG(angle){
+  const tgt={x:140,y:58};
+  const cam={eye:{x:38,y:58},high:{x:38,y:14},low:{x:38,y:104},bird:{x:140,y:6}}[angle]||{x:38,y:58};
+  const ang=Math.atan2(tgt.y-cam.y,tgt.x-cam.x)*180/Math.PI;
+  return `<svg viewBox="0 0 200 118" role="img" aria-label="Side view of where the camera is"><line x1="0" y1="108" x2="200" y2="108" stroke="currentColor" opacity=".35" stroke-width="2"/>
+  <g fill="currentColor" opacity=".85"><circle cx="140" cy="54" r="8"/><rect x="134" y="63" width="12" height="27" rx="4"/><rect x="134" y="88" width="5" height="20" rx="2"/><rect x="141" y="88" width="5" height="20" rx="2"/></g>
+  <line x1="${cam.x}" y1="${cam.y}" x2="${tgt.x}" y2="${tgt.y}" stroke="#E3B23C" stroke-width="2.5" stroke-dasharray="5 4"/>
+  <g transform="translate(${cam.x} ${cam.y}) rotate(${ang})"><rect x="-14" y="-8" width="20" height="16" rx="3" fill="#14254A" stroke="#E3B23C" stroke-width="1.5"/><path d="M6 -5 L15 -9 V9 L6 5Z" fill="#E3B23C"/></g></svg>`;
+}
+
+/* ---------- unit data ---------- */
+const SHOT={
+ id:'shot', title:'Shot Detectives', color:'var(--teal)', soft:'var(--teal-soft)',
+ dq:'How do filmmakers make us feel something <b>without telling us</b> how to feel?',
+ ican:['I can name the shot sizes, camera angles, camera moves, and sounds I see and hear in a video.',
+  'I can explain how a filmmaker’s choices create a mood or feeling.',
+  'I can use evidence from a video to support my claim.',
+  'I can use my Detective Toolkit to plan shots for my own video.'],
+ cats:['Shot size','Camera angle','Camera move','Sound','Detective words'],
+ cards:[
+  {id:'EWS',cat:'Shot size',term:'Extreme Wide Shot (EWS)',es:'plano general extremo',def:'A huge place. People look tiny.',eff:'Shows where we are. Can make someone feel small or alone.',pic:{size:'EWS'}},
+  {id:'WS',cat:'Shot size',term:'Wide Shot (WS)',es:'plano general',def:'The whole person, head to toe, plus the space around them.',eff:'Shows action and setting.',pic:{size:'WS'}},
+  {id:'MS',cat:'Shot size',term:'Medium Shot (MS)',es:'plano medio',def:'The person from the waist up.',eff:'Shows talking and body language.',pic:{size:'MS'}},
+  {id:'CU',cat:'Shot size',term:'Close-Up (CU)',es:'primer plano',def:'The face fills the screen.',eff:'Helps us feel the character’s emotion.',pic:{size:'CU'}},
+  {id:'ECU',cat:'Shot size',term:'Extreme Close-Up (ECU)',es:'plano detalle',def:'One small detail: eyes, hands, or an object.',eff:'Points to something important. Builds tension.',pic:{size:'ECU'}},
+  {id:'eye',cat:'Camera angle',term:'Eye Level',es:'ángulo normal',def:'The camera is even with the subject’s eyes.',eff:'The subject feels normal, equal to us.',pic:{angle:'eye'}},
+  {id:'high',cat:'Camera angle',term:'High Angle',es:'ángulo picado',def:'The camera is above, looking down.',eff:'The subject looks small, weak, or in trouble.',pic:{angle:'high'}},
+  {id:'low',cat:'Camera angle',term:'Low Angle',es:'ángulo contrapicado',def:'The camera is below, looking up.',eff:'The subject looks big, powerful, or scary.',pic:{angle:'low'}},
+  {id:'bird',cat:'Camera angle',term:'Bird’s-Eye View',es:'vista cenital',def:'Straight down from way above.',eff:'Looks like a map. Shows the big picture.',pic:{angle:'bird'}},
+  {id:'static',cat:'Camera move',term:'Static',es:'cámara fija',def:'The camera does not move.',eff:'Feels calm, or lets us study the moment.',pic:{emoji:'⏸️'}},
+  {id:'pan',cat:'Camera move',term:'Pan',es:'paneo',def:'The camera turns left or right.',eff:'Shows a space or follows action side to side.',pic:{emoji:'↔️'}},
+  {id:'tilt',cat:'Camera move',term:'Tilt',es:'inclinación vertical',def:'The camera turns up or down.',eff:'Shows how tall something is, or reveals something.',pic:{emoji:'↕️'}},
+  {id:'zoom',cat:'Camera move',term:'Zoom',es:'zoom',def:'The lens moves in or out. The camera stays put.',eff:'Pulls our attention to one thing, fast.',pic:{emoji:'🔍'}},
+  {id:'track',cat:'Camera move',term:'Tracking',es:'travelling',def:'The whole camera travels with the subject.',eff:'Makes us feel like we are moving with them.',pic:{emoji:'🛤️'}},
+  {id:'dialogue',cat:'Sound',term:'Dialogue',es:'diálogo',def:'People talking.',eff:'Tells us what characters think and want.',pic:{emoji:'💬'}},
+  {id:'music',cat:'Sound',term:'Music',es:'música',def:'A song or score added to the video.',eff:'Sets the mood fast: happy, sad, scary, exciting.',pic:{emoji:'🎵'}},
+  {id:'sfx',cat:'Sound',term:'Sound Effects',es:'efectos de sonido',def:'Added sounds, like a crash, a door slam, or a beep.',eff:'Makes actions feel real or surprising.',pic:{emoji:'💥'}},
+  {id:'ambient',cat:'Sound',term:'Ambient Sound',es:'sonido ambiente',def:'Background sounds of a place: birds, traffic, hallway noise.',eff:'Makes the place feel real.',pic:{emoji:'🌳'}},
+  {id:'silence',cat:'Sound',term:'Silence',es:'silencio',def:'No sound at all, on purpose.',eff:'Makes us lean in and pay attention. Builds tension.',pic:{emoji:'🤫'}},
+  {id:'mood',cat:'Detective words',term:'Mood',es:'ambiente / estado de ánimo',def:'The feeling the audience gets from a scene.',eff:'Filmmakers choose shots and sounds to build it.',pic:{emoji:'🎭'}},
+  {id:'claim',cat:'Detective words',term:'Claim',es:'afirmación',def:'Your answer or opinion, stated clearly.',eff:'Example: “This scene feels lonely.”',pic:{emoji:'📌'}},
+  {id:'evidence',cat:'Detective words',term:'Evidence',es:'evidencia',def:'A specific moment you saw or heard that proves your claim.',eff:'Example: “An extreme wide shot shows her alone in a huge field.”',pic:{emoji:'🔎'}},
+  {id:'reasoning',cat:'Detective words',term:'Reasoning',es:'razonamiento',def:'How your evidence proves your claim.',eff:'Example: “Tiny in a big space makes her seem alone.”',pic:{emoji:'🧠'}}
+ ],
+ quiz:{
+  required:[
+   {id:'s1',q:'The character’s face fills the whole screen. What shot size is this?',o:['Close-up','Wide shot','Extreme wide shot','Medium shot'],a:0,why:'In a close-up, the face fills the screen so we can see emotion.'},
+   {id:'s2',q:'The camera is below the character, looking up. What angle is this?',o:['Low angle','High angle','Eye level','Bird’s-eye view'],a:0,why:'Low angle means the camera is low, looking up.'},
+   {id:'s3',q:'The camera turns from left to right to show a whole classroom. What move is this?',o:['Pan','Tilt','Zoom','Static'],a:0,why:'A pan turns side to side. A tilt turns up and down.'},
+   {id:'s4',q:'You hear birds, cars, and people chatting in the background. What kind of sound is this?',o:['Ambient sound','Dialogue','Sound effects','Silence'],a:0,why:'Ambient sound is the background noise of a place.'},
+   {id:'s5',q:'Which shot is best for showing WHERE a story takes place?',o:['Extreme wide shot','Extreme close-up','Close-up','Medium shot'],a:0,why:'An extreme wide shot shows the whole place.'},
+   {id:'s6',q:'The camera rolls along beside a runner the whole time. What move is this?',o:['Tracking','Zoom','Tilt','Static'],a:0,why:'In tracking, the whole camera travels with the subject.'}
+  ],
+  stretch:[
+   {id:'s7',q:'A filmmaker wants the bully in a scene to look powerful and scary. Which angle is the best choice?',o:['Low angle','High angle','Bird’s-eye view','Eye level'],a:0,why:'Looking up at someone makes them seem bigger and more powerful.'},
+   {id:'s8',q:'A director wants us to feel how nervous a student is right before a big test. Which shot size works best?',o:['Close-up on the student’s face','Extreme wide shot of the school','Wide shot of the whole class','Bird’s-eye view of the desks'],a:0,why:'A close-up lets us see the worry on the face, so we feel it too.'},
+   {id:'s9',q:'In a scene, the music suddenly stops and everything goes silent. What is the most likely effect?',o:['It builds tension and makes us pay attention','It makes the scene feel funny','It shows us where we are','It tells us what the character is thinking'],a:0,why:'Sudden silence makes the audience lean in and wonder what will happen next.'},
+   {id:'s10',q:'Which sentence is EVIDENCE, not a claim?',o:['In the opening, an extreme wide shot shows the girl alone in a huge empty field.','The video felt lonely.','I liked this video a lot.','Lonely videos are always sad.'],a:0,why:'Evidence points to a specific moment you can see or hear. The others are opinions.'},
+   {id:'s11',q:'In “Pip,” the camera looks down at Pip after Pip fails the test. Why did the filmmaker choose a high angle?',o:['To make Pip look small and defeated','To show where the school is','To make Pip look powerful','To help us hear the music'],a:0,why:'A high angle makes a character look small, weak, or in trouble.'}
+  ],
+  advanced:[
+   {id:'s12',q:'Two teams film “a student opens a locker.” Team A: eye level, static, cheerful music. Team B: extreme close-up on the hand, slow zoom, silence, then a sudden sound effect. What mood is Team B most likely creating?',o:['Suspense or mystery','Calm and peaceful','Happy and silly','Bored'],a:0,why:'Tight shots, a slow zoom, and silence broken by a sudden sound all build suspense.'},
+   {id:'s13',q:'Which is the STRONGEST reasoning sentence?',o:['The high angle makes us look down on her like she is powerless, which shows she feels small.','The high angle is a high angle.','I think it was a good angle.','The camera was up high in this part.'],a:0,why:'Strong reasoning explains HOW the evidence proves the claim. The others only describe or give an opinion.'},
+   {id:'s14',q:'A news story about a real person uses dark music and low angles. What question should a Shot Detective ask?',o:['Are these choices pushing me to feel a certain way about a real person?','What is the reporter’s favorite color?','How long was the video?','Was this filmed on a phone?'],a:0,why:'News should inform. Shot Detectives notice when camera and sound choices try to steer our feelings about real people.'}
+  ]
+ },
+ deeper:[
+  {id:'d1',title:'Director’s Cut',prompt:'Pick one scene from a short film we studied (The Present, Pip, or Soar). Redesign three shots so the scene creates the OPPOSITE mood. For each shot, name the old choice, your new choice, and how it changes the feeling.',strong:['Three shots, each with old choice → new choice','A clear mood flip (for example, joyful → lonely)','A “because” for every change, using toolkit words']},
+  {id:'d2',title:'News vs. Film Investigation',prompt:'Watch one local news story and one short film. Do news stories use the same tools as filmmakers? Should they? Take a side and defend it with at least two pieces of evidence from EACH video.',strong:['A clear claim that answers “should they?”','Two pieces of evidence from each video','Reasoning about fairness to real people','One counterargument and your response to it']},
+  {id:'d3',title:'Field Guide for 6th Graders',prompt:'Plan a short “Shot Detective Field Guide” video that teaches three toolkit tools to a 6th grader. Write the script and a shot list. You must demonstrate each tool while you explain it.',strong:['Three tools, each shown AND explained','A shot list that matches your script','Kid-friendly words and one example per tool','A plan for how you will check that a 6th grader learned it']}
+ ]
+};
+
+const CRITIC={
+ id:'critic', title:'The Critic’s Chair', color:'var(--red)', soft:'var(--red-soft)',
+ dq:'What makes a review <b>more than just an opinion?</b>',
+ ican:['I can describe what a film critic does and how critics earn a living.',
+  'I can use job data to decide if film critic is a real career option.',
+  'I can compare famous critics and the skills they share.',
+  'I can write and record a short movie review that uses evidence, not just opinion.',
+  'I can give helpful Glow & Grow feedback.'],
+ cats:['Career words','S.C.O.R.E.','Critic Code','Famous critics'],
+ cards:[
+  {id:'critic',cat:'Career words',term:'Critic',es:'crítico / crítica',def:'A person who judges creative work and explains their opinion to an audience.',eff:'Critics help people decide what to watch.',pic:{emoji:'🎬'}},
+  {id:'review',cat:'Career words',term:'Review',es:'reseña',def:'A short piece that gives an opinion about a movie, backed by reasons.',eff:'Can be written, spoken, or recorded.',pic:{emoji:'📝'}},
+  {id:'verdict',cat:'Career words',term:'Verdict',es:'veredicto',def:'Your final judgment, like a rating.',eff:'Example: “4 out of 5 stars.”',pic:{emoji:'⭐'}},
+  {id:'craft',cat:'Career words',term:'Craft',es:'técnica',def:'The choices filmmakers make: camera, lighting, sound, editing, acting.',eff:'Good critics talk about HOW a movie is made, not just the story.',pic:{emoji:'🎥'}},
+  {id:'spoiler',cat:'Career words',term:'Spoiler',es:'spoiler / revelación',def:'Giving away a surprise or the ending.',eff:'A good review never spoils the movie.',pic:{emoji:'🙊'}},
+  {id:'freelancer',cat:'Career words',term:'Freelancer',es:'trabajador independiente',def:'Someone who works for many clients instead of one boss.',eff:'Many critics today are freelancers or run their own channels.',pic:{emoji:'💼'}},
+  {id:'median',cat:'Career words',term:'Median Salary',es:'salario mediano',def:'The middle pay. Half of workers earn more, half earn less.',eff:'Film critics (and similar writers): about $62,200 a year.',pic:{emoji:'💵'}},
+  {id:'outlook',cat:'Career words',term:'Job Outlook',es:'perspectiva laboral',def:'How much a job is expected to grow or shrink in the next 10 years.',eff:'For critics: about −6%, a small drop.',pic:{emoji:'📉'}},
+  {id:'ip',cat:'Career words',term:'Intellectual Property',es:'propiedad intelectual',def:'Creative work that belongs to the person who made it.',eff:'Keep clips short and give credit.',pic:{emoji:'©️'}},
+  {id:'S',cat:'S.C.O.R.E.',term:'S: Set the scene',es:'presenta el tema',def:'Hook your viewer and name the title.',eff:'“If you’ve ever wondered what toys do when we leave the room…”',pic:{letter:'S'}},
+  {id:'C',cat:'S.C.O.R.E.',term:'C: Content',es:'contenido (sin spoilers)',def:'Tell what the movie is about in 1–2 sentences. No spoilers!',eff:'“This film follows ___ as they try to ___.”',pic:{letter:'C'}},
+  {id:'O',cat:'S.C.O.R.E.',term:'O: Observe the craft',es:'observa la técnica',def:'Point to ONE film choice: camera, lighting, sound, editing, or acting.',eff:'“The close-ups make us feel ___.”',pic:{letter:'O'}},
+  {id:'R',cat:'S.C.O.R.E.',term:'R: Reasons + evidence',es:'razones y evidencia',def:'Give two reasons for your opinion, each with an example.',eff:'“One reason is ___. For example, ___.”',pic:{letter:'R'}},
+  {id:'E',cat:'S.C.O.R.E.',term:'E: End with your verdict',es:'termina con tu veredicto',def:'Give a rating and say who should watch it.',eff:'“I give it ___ stars. Perfect for ___.”',pic:{letter:'E'}},
+  {id:'code1',cat:'Critic Code',term:'No spoilers. Ever.',es:'nada de spoilers',def:'Never give away a surprise or the ending.',eff:'Respect people who haven’t seen it yet.',pic:{emoji:'🚫'}},
+  {id:'code2',cat:'Critic Code',term:'Judge the work, not the people',es:'juzga la obra, no a las personas',def:'Talk about choices in the movie, never about how someone looks.',eff:'“The acting felt stiff” ✔  “The actor is ugly” ✘',pic:{emoji:'⚖️'}},
+  {id:'code3',cat:'Critic Code',term:'Back up every opinion',es:'apoya cada opinión',def:'Every opinion needs evidence: a moment, a shot, a sound.',eff:'“It was good” is not enough.',pic:{emoji:'🧾'}},
+  {id:'code4',cat:'Critic Code',term:'Give credit',es:'da crédito',def:'Name the title and the director. Keep clips short and credit the creator.',eff:'This respects intellectual property.',pic:{emoji:'🙌'}},
+  {id:'ebert',cat:'Famous critics',term:'Roger Ebert',es:'',def:'Chicago Sun-Times critic. First film critic to win a Pulitzer Prize (1975).',eff:'Made “thumbs up, thumbs down” famous on TV with Gene Siskel.',pic:{emoji:'👍'}},
+  {id:'kael',cat:'Famous critics',term:'Pauline Kael',es:'',def:'Wrote for The New Yorker magazine from 1968 to 1991.',eff:'Known for a bold, personal, opinionated style.',pic:{emoji:'🗽'}},
+  {id:'maltin',cat:'Famous critics',term:'Leonard Maltin',es:'',def:'Wrote a famous yearly movie guide book and reviewed films on TV.',eff:'Known for short, clear reviews anyone can use.',pic:{emoji:'📚'}},
+  {id:'morris',cat:'Famous critics',term:'Wesley Morris',es:'',def:'Pulitzer Prize–winning critic for The Boston Globe and The New York Times.',eff:'Connects movies to culture and everyday life.',pic:{emoji:'🏆'}},
+  {id:'stuckmann',cat:'Famous critics',term:'Chris Stuckmann',es:'',def:'Built his career reviewing movies on YouTube.',eff:'Later directed his own feature film. Critics can become creators!',pic:{emoji:'▶️'}}
+ ],
+ quiz:{
+  required:[
+   {id:'c1',q:'What does a film critic do?',o:['Watches movies, judges them, and explains their opinion with reasons','Sells movie tickets','Acts in movies','Runs the camera on a film set'],a:0,why:'Critics judge creative work and explain their thinking to an audience.'},
+   {id:'c2',q:'Which sentence is a SPOILER?',o:['At the end, the dog turns out to be the hero’s long-lost brother.','This movie has great music.','The film follows a puppy who dreams of being a guide dog.','I give it 4 stars.'],a:0,why:'It gives away a surprise ending. The others are safe.'},
+   {id:'c3',q:'What does “median salary” mean?',o:['The middle pay: half earn more, half earn less','The highest pay anyone earns','The pay for a brand-new worker','The pay after one month'],a:0,why:'The median is the middle of all the salaries.'},
+   {id:'c4',q:'The job outlook for film critics is about −6%. What does that mean?',o:['The number of jobs is expected to shrink a little','There are no jobs at all','Critics earn 6% less money','The job is growing fast'],a:0,why:'A negative outlook means the job is expected to get a little smaller over 10 years.'},
+   {id:'c5',q:'Which part of S.C.O.R.E. gives the rating and says who should watch?',o:['E: End with your verdict','S: Set the scene','C: Content','O: Observe the craft'],a:0,why:'E is your verdict: the rating plus who it’s perfect for.'},
+   {id:'c6',q:'Who was the first film critic to win a Pulitzer Prize?',o:['Roger Ebert','Chris Stuckmann','Leonard Maltin','Pauline Kael'],a:0,why:'Roger Ebert won the Pulitzer Prize for Criticism in 1975.'}
+  ],
+  stretch:[
+   {id:'c7',q:'Which sentence uses EVIDENCE, not just opinion?',o:['The close-up on Pip’s face when the truck beeps made me feel his fear.','It was really, really good.','Everyone should watch it.','This is my favorite movie ever.'],a:0,why:'It points to a specific moment and a craft choice.'},
+   {id:'c8',q:'A critic earns the median of $62,200 a year. About how much is that per month, before taxes?',o:['About $5,183','About $6,220','About $1,200','About $620'],a:0,why:'$62,200 ÷ 12 months ≈ $5,183 a month.'},
+   {id:'c9',q:'The job is shrinking, but there are still about 3,400 openings each year. How can both be true?',o:['People retire or change jobs, so their spots open up','The data must be wrong','Only kids can get those jobs','Openings are only for actors'],a:0,why:'Even in a shrinking field, workers leave every year and need to be replaced.'},
+   {id:'c10',q:'Which sentence best fits “O: Observe the craft”?',o:['The low angle makes the hero look brave.','This movie is about a robot.','I give it 5 stars.','Have you ever lost something important?'],a:0,why:'O points to one film choice (camera, lighting, sound, editing, acting) and its effect.'},
+   {id:'c11',q:'Which sentence follows the Critic Code?',o:['The acting felt stiff in the second half.','The actor has a weird face.','People who like this movie are dumb.','Here’s the ending so you don’t have to watch it.'],a:0,why:'Judge the work, not the people. Be honest AND respectful.'}
+  ],
+  advanced:[
+   {id:'c12',q:'Roger Ebert worked for a newspaper. Chris Stuckmann started on YouTube. What does this tell us about how the career is changing?',o:['Critics can now build an audience online without a newspaper job','Newspapers no longer hire anyone','YouTube critics do not need evidence','Only famous people can be critics'],a:0,why:'The internet created new paths into the career, but the skills are the same: opinions backed by evidence.'},
+   {id:'c13',q:'A review says: “This movie is the worst. Everyone who likes it is dumb. 1 star.” What is the BIGGEST problem?',o:['No reasons or evidence, and it attacks people instead of the work','It is too long','It gives a rating','It names the movie'],a:0,why:'It skips R (reasons + evidence) and breaks the Critic Code.'},
+   {id:'c14',q:'You want to show part of a movie in your recorded review. What is the best choice?',o:['Use a short clip and credit who made it','Upload the whole movie','Use any clip without saying where it came from','Change the title so no one knows'],a:0,why:'Short clips with credit respect intellectual property.'}
+  ]
+ },
+ deeper:[
+  {id:'d1',title:'Two-Critic Debate',prompt:'With a partner, pick one movie you disagree about. Each of you writes a S.C.O.R.E. review. Then script a 2-minute debate segment where you respond to each other’s reasons respectfully, like Siskel and Ebert.',strong:['Two complete S.C.O.R.E. reviews','Each critic answers the other’s best reason','Respectful disagreement (judge the work, not the person)','A final “agree to disagree” or a changed mind, with why']},
+  {id:'d2',title:'Build Your Own Rating System',prompt:'Stars are boring. Design a NEW rating system (not stars, not thumbs). Give it at least three criteria. Test it on two movies and defend why your system is fairer or more useful than stars.',strong:['A clear, original scale with 3+ criteria','Both test ratings explained with evidence','An argument comparing your system to stars','One weakness of your system and how you would fix it']},
+  {id:'d3',title:'Career Pitch: 2030',prompt:'Is film critic a smart career choice for someone your age? Use the job data (pay, outlook, openings) AND what you learned about how critics work today. Write a pitch to a student deciding on a high school pathway.',strong:['Uses at least two job numbers correctly','Explains how the job is changing (newspapers vs. online)','Names skills the student should build now','A clear yes / no / it depends, defended with evidence']}
+ ]
+};
+const UNITS={shot:SHOT,critic:CRITIC};
+const TIERS=[['required','Required'],['stretch','Stretch Challenge'],['advanced','Advanced Challenge']];
+
+/* ---------- unit shell ---------- */
+const STEPS=[['learn','Learn It'],['match','Match It'],['check','Check It'],['apply','Apply It'],['deeper','Go Deeper','Advanced']];
+function renderUnit(U){
+  const v=$('#v-'+U.id); const st=S[U.id];
+  v.style.setProperty('--accent',U.color); v.style.setProperty('--accent-soft',U.soft);
+  v.innerHTML=`<div class="unit-head"><h1>${U.title}</h1><p class="dq">${U.dq}</p>
+   <details class="ican"><summary>My learning goals (I can…)</summary><ul>${U.ican.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></details></div>
+   <div class="stepnav" role="tablist">${STEPS.map((s,i)=>`<button role="tab" data-step="${s[0]}" aria-selected="${st.step===s[0]}"><span class="n">${i+1}</span><span>${s[1]}${s[2]?`<br><span class="tier">${s[2]}</span>`:''}</span></button>`).join('')}</div>
+   <div class="panel" id="${U.id}-panel"></div>`;
+  $$('.stepnav button',v).forEach(b=>b.onclick=()=>{st.step=b.dataset.step;save();renderUnit(U);});
+  const p=$('#'+U.id+'-panel');
+  ({learn:renderLearn,match:renderMatch,check:renderCheck,apply:U.id==='shot'?renderMixer:renderCriticApply,deeper:renderDeeper})[st.step](U,p);
+}
+
+/* 1. Learn It */
+function cardPic(c){
+  if(c.pic.size) return `<div class="pic">${frameSVG(c.pic.size)}</div>`;
+  if(c.pic.angle) return `<div class="pic plain angle-dia" style="color:var(--ink)">${angleSVG(c.pic.angle)}</div>`;
+  if(c.pic.letter) return `<div class="pic plain" style="font-family:var(--display);font-size:4rem;color:var(--accent);font-weight:900">${c.pic.letter}</div>`;
+  return `<div class="pic plain" aria-hidden="true">${c.pic.emoji}</div>`;
+}
+function renderLearn(U,p){
+  const st=S[U.id]; let filter=renderLearn.f?.[U.id]||'All';
+  const list=U.cards.filter(c=>filter==='All'||c.cat===filter);
+  p.innerHTML=`<div class="panel-intro">${sayBtn('Tap a card to flip it. Read the meaning, then say it in your own words.')}<p><b>Tap a card to flip it.</b> Read the meaning, then say it in your own words to a partner. <span class="muted">${st.flipped.length} of ${U.cards.length} cards flipped.</span></p></div>
+   <div class="chips">${['All',...U.cats].map(c=>`<button class="chip" aria-pressed="${c===filter}" data-f="${c}">${c}</button>`).join('')}</div>
+   ${U.id==='critic'&&(filter==='All'||filter==='Career words')?`<div class="datastrip"><div><b>$62,200</b>Median pay per year</div><div><b>−6%</b>Job outlook (10 years)</div><div><b>3,400</b>Openings each year</div><div><b>≈$5,183</b>Median pay per month</div></div>`:''}
+   <div class="cards">${list.map(c=>`<div class="fc ${st.flipped.includes(c.id)?'':''}" tabindex="0" role="button" aria-label="${esc(c.term)}. Flip card" data-id="${c.id}"><div class="fc-in">
+     <div class="fc-face fc-front">${st.flipped.includes(c.id)?'<span class="seen">Seen</span>':''}<span class="cat">${c.cat}</span><span class="term">${esc(c.term)}</span>${c.es?`<span class="es">${esc(c.es)}</span>`:''}${cardPic(c)}<span class="hint">Tap to flip</span></div>
+     <div class="fc-face fc-back"><div class="fc-row"><span class="cat">${esc(c.term)}</span>${sayBtn(c.term+'. '+c.def+' '+c.eff)}</div><p class="def">${esc(c.def)}</p><p class="eff"><b>${U.id==='shot'&&c.cat!=='Detective words'?'It often: ':''}</b>${esc(c.eff)}</p></div>
+   </div></div>`).join('')}</div>`;
+  $$('.chip',p).forEach(b=>b.onclick=()=>{renderLearn.f={...(renderLearn.f||{}),[U.id]:b.dataset.f};renderLearn(U,p);});
+  $$('.fc',p).forEach(f=>{const go=()=>{f.classList.toggle('flip');const id=f.dataset.id;if(!st.flipped.includes(id)){st.flipped.push(id);save();}};f.onclick=go;f.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}};});
+}
+
+/* 2. Match It */
+function renderMatch(U,p){
+  const st=S[U.id];
+  const pool=shuffle(U.cards.filter(c=>c.cat!=='Famous critics'||U.id==='critic')).slice(0,6);
+  const left=shuffle(pool), right=shuffle(pool);
+  let sel=null, done=0, misses=0, t0=Date.now(), timer;
+  p.innerHTML=`<div class="panel-intro">${sayBtn('Tap a word, then tap its meaning. Match all six as fast as you can.')}<p><b>Tap a word, then tap its meaning.</b> Match all six as fast as you can. New words every round.</p></div>
+   <div class="matchbar"><span class="stat" id="mTime">0 s</span><span class="stat">Best: ${st.matchBest?st.matchBest+' s':'none yet'}</span><span class="stat">Rounds: ${st.matchRounds}</span><button class="btn ghost" id="mNew">New round</button></div>
+   <div class="match"><div class="col">${left.map(c=>`<button class="mt term-b" data-k="${c.id}" data-side="t">${esc(c.term)}</button>`).join('')}</div>
+   <div class="col">${right.map(c=>`<button class="mt" data-k="${c.id}" data-side="d">${esc(c.def)}</button>`).join('')}</div></div><div id="mDone"></div>`;
+  timer=setInterval(()=>{const e=$('#mTime',p);if(!e||!document.body.contains(e)){clearInterval(timer);return;}e.textContent=Math.round((Date.now()-t0)/1000)+' s';},500);
+  $('#mNew',p).onclick=()=>{clearInterval(timer);renderMatch(U,p);};
+  $$('.mt',p).forEach(b=>b.onclick=()=>{
+    if(b.classList.contains('done'))return;
+    if(!sel||sel.dataset.side===b.dataset.side){ if(sel)sel.classList.remove('sel'); sel=b; b.classList.add('sel'); return; }
+    if(sel.dataset.k===b.dataset.k){ [sel,b].forEach(x=>{x.classList.remove('sel');x.classList.add('done');x.setAttribute('aria-disabled','true');}); sel=null; done++;
+      if(done===6){clearInterval(timer);const s=Math.round((Date.now()-t0)/1000);st.matchRounds++;if(!st.matchBest||s<st.matchBest)st.matchBest=s;save();
+        $('#mDone',p).innerHTML=`<p class="fb good" style="margin:1rem 0 0"><b>All matched in ${s} seconds${misses?` with ${misses} miss${misses>1?'es':''}`:' with no misses'}!</b>Try a new round to see different words, or move on to Check It.</p>`;}
+    } else { misses++; [sel,b].forEach(x=>{x.classList.add('oops');setTimeout(()=>x.classList.remove('oops'),400);}); sel.classList.remove('sel'); sel=null; }
+  });
+}
+
+/* 3. Check It */
+function renderCheck(U,p){
+  const st=S[U.id]; const tier=renderCheck.t?.[U.id]||'required';
+  const qs=U.quiz[tier]; const offset=tier==='required'?0:tier==='stretch'?U.quiz.required.length:U.quiz.required.length+U.quiz.stretch.length;
+  const tierScore=k=>U.quiz[k].filter(q=>st.quiz[q.id]?.first).length;
+  const notes={required:'Start here. These check that you know the words.',stretch:'Explain why. These ask what a choice does to the audience.',advanced:'Think like an expert. Compare, judge, and transfer your skills.'};
+  p.innerHTML=`<div class="tierbar">${TIERS.map(([k,l])=>`<button class="chip" data-t="${k}" aria-pressed="${k===tier}">${l} <small>${tierScore(k)}/${U.quiz[k].length}</small></button>`).join('')}</div>
+   <p class="tier-note">${notes[tier]} Only your <b>first try</b> counts on your Score Card, so think before you tap.</p>
+   ${qs.map((q,i)=>{const r=st.quiz[q.id]; const order=q._order||(q._order=shuffle(q.o.map((_,k)=>k)));
+     return `<div class="qcard" data-q="${q.id}"><div class="qtop"><span class="qnum">${offset+i+1}</span><span class="qtext">${esc(q.q)}</span>${sayBtn(q.q+' Choices: '+order.map(k=>q.o[k]).join('. '))}</div>
+     <div class="opts">${order.map(k=>`<button class="opt ${r&&r.done&&k===q.a?'right':''}" data-k="${k}" ${r&&r.done?'disabled':''}>${esc(q.o[k])}</button>`).join('')}</div>
+     ${r&&r.done?`<div class="fb good"><b>${r.first?'Correct on your first try!':'You found it.'}</b>${esc(q.why)}</div>`:''}</div>`}).join('')}`;
+  $$('.chip',p).forEach(b=>b.onclick=()=>{renderCheck.t={...(renderCheck.t||{}),[U.id]:b.dataset.t};renderCheck(U,p);});
+  $$('.qcard',p).forEach(card=>{const q=qs.find(x=>x.id===card.dataset.q);
+    $$('.opt',card).forEach(b=>b.onclick=()=>{
+      const k=+b.dataset.k; const r=st.quiz[q.id]||(st.quiz[q.id]={tries:0});
+      r.tries++;
+      if(k===q.a){ r.done=true; if(r.tries===1) r.first=true; save(); renderCheck(U,p); toast(r.first?'Correct!':'Got it!'); }
+      else { b.classList.add('wrong'); b.disabled=true; save(); let fb=$('.fb',card); if(!fb){fb=document.createElement('div');card.appendChild(fb);} fb.className='fb try'; fb.innerHTML='<b>Not quite. Try again.</b>Look back at your flashcards if you need a hint.'; }
+    });
+  });
+}
+
+/* 5. Go Deeper */
+function renderDeeper(U,p){
+  const st=S[U.id];
+  p.innerHTML=`<div class="panel-intro">${sayBtn('Advanced Challenges. These are bigger projects that take more than one class period. Pick one, plan it, and defend your thinking.')}<p><b>Advanced Challenges.</b> These are bigger projects that can take more than one class. Pick one, plan it here, then share it with your teacher. Your writing saves on this device.</p></div>
+  ${U.deeper.map(d=>`<div class="deep"><h3>${esc(d.title)} ${sayBtn(d.title+'. '+d.prompt)}</h3><p>${esc(d.prompt)}</p><b>Strong work includes:</b><ul>${d.strong.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>
+   <label class="sr" for="${U.id}-${d.id}">My response</label><textarea id="${U.id}-${d.id}" data-d="${d.id}" rows="6" placeholder="Plan or write your response here…">${esc(st.deeper[d.id]||'')}</textarea>
+   <div class="row"><span class="wc" data-wc="${d.id}">${words(st.deeper[d.id]||'')} words</span><button class="btn ghost" data-copy="${d.id}">Copy my response</button></div></div>`).join('')}`;
+  $$('textarea',p).forEach(t=>t.oninput=()=>{st.deeper[t.dataset.d]=t.value;save();$(`[data-wc="${t.dataset.d}"]`,p).textContent=words(t.value)+' words';});
+  $$('[data-copy]',p).forEach(b=>b.onclick=()=>{const d=U.deeper.find(x=>x.id===b.dataset.copy);copyText(`${U.title}: ${d.title}\n${S.name?S.name+'\n':''}\n${st.deeper[d.id]||''}`);});
+}
+
+/* 4a. Apply It: Mood Mixer (Shot Detectives) */
+const SCENES=['A student walks into the cafeteria alone','Someone finds a note in their locker','A player steps up to take the last shot of the game','A kid waits at the bus stop as the sun goes down','Someone opens a mystery box','A student gets their test back'];
+const MOODS={
+ Suspenseful:{size:['CU','ECU'],angle:['low','high'],move:['zoom','static'],sound:['silence','sfx']},
+ Lonely:{size:['EWS','WS'],angle:['high','bird'],move:['static','pan'],sound:['silence','music','ambient']},
+ Joyful:{size:['MS','WS'],angle:['eye','low'],move:['track','pan'],sound:['music','dialogue']},
+ Powerful:{size:['WS','MS'],angle:['low'],move:['tilt','track'],sound:['music','sfx']},
+ Calm:{size:['EWS','WS'],angle:['eye','bird'],move:['static','pan'],sound:['ambient','music']}
+};
+const OPTS={size:[['EWS','Extreme wide'],['WS','Wide'],['MS','Medium'],['CU','Close-up'],['ECU','Extreme close-up']],
+ angle:[['eye','Eye level'],['high','High'],['low','Low'],['bird','Bird’s-eye']],
+ move:[['static','Static'],['pan','Pan'],['tilt','Tilt'],['zoom','Zoom'],['track','Tracking']],
+ sound:[['dialogue','Dialogue'],['music','Music'],['sfx','Sound effects'],['ambient','Ambient'],['silence','Silence']]};
+const LABEL={size:'Shot size',angle:'Camera angle',move:'Camera move',sound:'Sound'};
+let mix={scene:null,mood:null,size:'WS',angle:'eye',move:'static',sound:'music',because:''}, raf=null;
+function renderMixer(U,p){
+  const st=S.shot; if(!mix.scene) drawCards();
+  const nameOf=(cat,k)=>OPTS[cat].find(o=>o[0]===k)[1];
+  p.innerHTML=`<div class="panel-intro">${sayBtn('Mood Mixer. Draw a scene card and a mood card. Choose a shot size, angle, camera move, and sound to create that mood. Then explain your choices with because.')}<p><b>Mood Mixer.</b> Draw a Scene card and a Mood card. Choose your tools to create that mood, then explain your thinking with “because.” <span class="muted">Plans checked: ${st.apply.mixer||0}</span></p></div>
+  <div class="drawn"><div class="drawcard"><small>Scene card</small><b>${esc(mix.scene)}</b></div><div class="drawcard mood"><small>Mood card</small><b>${mix.mood}</b></div><button class="btn gold" id="redraw">Draw new cards</button></div>
+  <div class="mixer"><div>
+    <div class="vf"><div id="vfLive"></div><span class="rec"><i></i>REC</span><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+     <span class="slate" id="slate"></span></div>
+    <div class="angle-dia" id="angDia" style="color:var(--ink)"></div>
+  </div><div class="pick">
+    ${Object.keys(OPTS).map(cat=>`<h4>${LABEL[cat]}</h4><div class="chips" data-cat="${cat}">${OPTS[cat].map(([k,l])=>`<button class="chip" data-k="${k}" aria-pressed="${mix[cat]===k}">${l}</button>`).join('')}</div>`).join('')}
+    <h4><label for="because">My “because” sentence</label></h4>
+    <p class="muted" style="margin:0 0 .3rem;font-size:.92rem">I chose a ___ because it makes the audience feel ___.</p>
+    <textarea id="because" rows="3" placeholder="I chose a close-up because…">${esc(mix.because)}</textarea>
+    <p style="margin-top:.6rem"><button class="btn" id="checkPlan">Check my plan</button></p>
+  </div></div>
+  <div class="verdict" id="verdict"></div>`;
+  $('#redraw',p).onclick=()=>{drawCards();renderMixer(U,p);};
+  $$('.pick .chips',p).forEach(g=>$$('.chip',g).forEach(b=>b.onclick=()=>{mix[g.dataset.cat]=b.dataset.k;$$('.chip',g).forEach(x=>x.setAttribute('aria-pressed',x===b));updateVF();$('#verdict',p).innerHTML='';}));
+  $('#because',p).oninput=e=>{mix.because=e.target.value;};
+  $('#checkPlan',p).onclick=()=>checkPlan(p);
+  updateVF();
+  function updateVF(){
+    $('#vfLive',p).innerHTML=`<svg id="liveSvg" viewBox="${vb(CROPS[mix.size])}" preserveAspectRatio="xMidYMid slice" aria-label="Preview of your shot"><g id="liveBg"><use href="#bgArt"/></g><use href="#kid"/></svg>`;
+    $('#slate',p).textContent=`${nameOf('size',mix.size)} • ${nameOf('angle',mix.angle)} • ${nameOf('move',mix.move)} • ${nameOf('sound',mix.sound)}`;
+    $('#angDia',p).innerHTML=angleSVG(mix.angle)+`<p class="muted" style="margin:.2rem .4rem 0;font-size:.85rem">Side view: where your camera is for a ${nameOf('angle',mix.angle).toLowerCase()} angle.</p>`;
+    animate();
+  }
+}
+function drawCards(){mix.scene=SCENES[Math.floor(Math.random()*SCENES.length)];const m=Object.keys(MOODS);let n;do{n=m[Math.floor(Math.random()*m.length)]}while(n===mix.mood&&m.length>1);mix.mood=n;mix.because='';}
+function animate(){
+  cancelAnimationFrame(raf); const svg=$('#liveSvg'); if(!svg||reduceMotion||mix.move==='static') return;
+  const base=CROPS[mix.size]; const bg=$('#liveBg'); const t0=performance.now();
+  const step=now=>{ if(!document.body.contains(svg)) return; const t=(now-t0)/1000; const s=Math.sin(t*0.9);
+    let [x,y,w,h]=base;
+    if(mix.move==='pan') x+=s*w*0.22;
+    if(mix.move==='tilt') y+=s*h*0.3;
+    if(mix.move==='zoom'){const f=1-(0.5+0.5*s)*0.45; const cx=800, cy=566; const nw=w*f, nh=h*f; x=cx-(cx-x)*f; y=cy-(cy-y)*f; w=nw; h=nh;}
+    svg.setAttribute('viewBox',`${x} ${y} ${w} ${h}`);
+    if(mix.move==='track') bg.setAttribute('transform',`translate(${-((t*base[2]*0.12)%800)} 0)`);
+    raf=requestAnimationFrame(step); };
+  raf=requestAnimationFrame(step);
+}
+const EFFECT={EWS:'makes the subject look tiny in a big world',WS:'shows the whole body and the place',MS:'shows body language and talking',CU:'lets us read emotion on the face',ECU:'zeroes in on one detail and builds tension',
+ eye:'feels normal and equal',high:'makes the subject look small or in trouble',low:'makes the subject look big and powerful',bird:'shows the big picture, like a map',
+ static:'holds still so we study the moment',pan:'sweeps across the space',tilt:'reveals something by moving up or down',zoom:'pulls our attention in fast',track:'carries us along with the subject',
+ dialogue:'lets characters tell us what they think',music:'sets the feeling right away',sfx:'adds surprise or makes actions feel real',ambient:'makes the place feel real',silence:'makes us lean in and wait'};
+function checkPlan(p){
+  const fit=MOODS[mix.mood]; let strong=0; const nameOf=(cat,k)=>OPTS[cat].find(o=>o[0]===k)[1];
+  const rows=Object.keys(OPTS).map(cat=>{const ok=fit[cat].includes(mix[cat]); if(ok)strong++;
+    return `<div class="fitrow ${ok?'strong':'maybe'}"><span class="ic">${ok?'✓':'?'}</span><div><b>${LABEL[cat]}: ${nameOf(cat,mix[cat])}.</b> ${ok?`Strong fit for <i>${mix.mood.toLowerCase()}</i>: it ${EFFECT[mix[cat]]}.`:`Not the usual pick for <i>${mix.mood.toLowerCase()}</i>. It ${EFFECT[mix[cat]]}. Filmmakers break rules on purpose, so your “because” must explain how this creates the mood. Usual picks: ${fit[cat].map(k=>nameOf(cat,k)).join(', ')}.`}</div></div>`;}).join('');
+  const b=mix.because.trim(); const hasBecause=/because|porque/i.test(b)&&words(b)>=8;
+  const st=S.shot; if(hasBecause){st.apply.mixer=(st.apply.mixer||0)+1; save();}
+  $('#verdict',p).innerHTML=`<h3>Director’s notes</h3><div class="meter" aria-hidden="true"><i style="width:${strong*25}%"></i></div><p class="muted">${strong} of 4 choices are classic picks for a ${mix.mood.toLowerCase()} mood.</p>${rows}
+   <div class="fitrow ${hasBecause?'strong':'maybe'}"><span class="ic">${hasBecause?'✓':'!'}</span><div>${hasBecause?'<b>Your “because” sentence is ready.</b> Read it to a partner. Do they agree it creates the mood?':'<b>Add your “because” sentence.</b> Write at least 8 words and use the word “because.” Example: “I chose a close-up because it shows the worry on her face.”'}</div></div>
+   <p style="margin-top:.8rem"><button class="btn gold" id="again">Draw new cards and try another</button></p>`;
+  $('#again',p).onclick=()=>{drawCards();renderMixer(SHOT,p);};
+  $('#verdict',p).scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});
+}
+
+/* 4b. Apply It: Critic's Chair */
+const SORT=[
+ {t:'Have you ever kept trying something even after it failed ten times?',a:'S'},
+ {t:'In the short film Soar, directed by Alyce Tzue, a girl named Mara helps a tiny pilot get back to his fleet.',a:'C'},
+ {t:'Close-ups on the tiny flying machine help us see how small and detailed Lucas’s world is.',a:'O'},
+ {t:'One reason I liked it is that Mara never gives up. For example, she keeps building even after her planes crash.',a:'R'},
+ {t:'I give Soar 4 out of 5 stars. It’s perfect for anyone who loves inventing things.',a:'E'}
+];
+const SPOIL=[
+ {t:'The film follows a puppy who dreams of becoming a guide dog.',a:'safe',why:'It tells what the movie is about without giving away surprises.'},
+ {t:'In the last scene, we find out the tiny pilots carry the stars into the sky.',a:'spoil',why:'It reveals the ending.'},
+ {t:'The music in the middle of the film made me feel hopeful.',a:'safe',why:'It shares a feeling about craft, not a plot surprise.'},
+ {t:'This movie has a twist ending you won’t see coming.',a:'safe',why:'It hints there’s a twist but doesn’t tell what it is.'},
+ {t:'The villain turns out to be the main character’s best friend.',a:'spoil',why:'It gives away the big twist.'},
+ {t:'The boy finally accepts the puppy, and then we learn the boy is missing a leg too.',a:'spoil',why:'It reveals the surprise ending of The Present.'}
+];
+const CATCH=[
+ {t:'Want to see a robot learn to dance? Bobcat Blast-Off is for you!',a:'ok'},
+ {t:'It follows a robot named Gizmo who joins a school dance team.',a:'ok'},
+ {t:'At the end, Gizmo wins the trophy and the team captain quits.',a:'spoil'},
+ {t:'It was just really, really good.',a:'noev'},
+ {t:'The tracking shot that follows Gizmo across the gym makes the dance feel exciting.',a:'ok'},
+ {t:'Honestly, the lead actor has a weird face.',a:'code'},
+ {t:'I give it 4 stars. Perfect for anyone who loves music.',a:'ok'}
+];
+const CATCHL={ok:'Looks good',spoil:'Spoiler',noev:'No evidence',code:'Breaks the Critic Code'};
+const CATCHWHY={spoil:'It gives away the ending.',noev:'“Really good” is an opinion with no reason or example.',code:'It judges a person, not the work.',ok:'This line follows S.C.O.R.E. and the Critic Code.'};
+const CRAFT=/camera|shot|angle|close-?up|wide|medium|pan|tilt|zoom|tracking|light|lighting|sound|music|silence|edit|editing|cut|acting|actor|actress|color|effect/i;
+function renderCriticApply(U,p){
+  const st=S.critic; const tab=renderCriticApply.t||'sort';
+  const tabs=[['sort','S.C.O.R.E. Sorter'],['spoil','Spoiler or Safe?'],['catch','Catch the Mistake'],['script','Script Builder']];
+  p.innerHTML=`<div class="subnav">${tabs.map(([k,l])=>`<button class="chip" data-tab="${k}" aria-pressed="${k===tab}">${l}${st.apply[k]?' ✓':''}</button>`).join('')}</div><div id="capp"></div>`;
+  $$('[data-tab]',p).forEach(b=>b.onclick=()=>{renderCriticApply.t=b.dataset.tab;renderCriticApply(U,p);});
+  const c=$('#capp',p);
+  const legend=`<div class="score-legend">${['S Set the scene','C Content','O Observe the craft','R Reasons + evidence','E End with your verdict'].map(x=>`<div><b>${x[0]}</b>${x.slice(2)}</div>`).join('')}</div>`;
+  if(tab==='sort'){
+    const order=renderCriticApply.so||(renderCriticApply.so=shuffle(SORT.map((_,i)=>i)));
+    const pick={};
+    c.innerHTML=`<div class="panel-intro">${sayBtn('These lines from a review are mixed up. Tag each line with the S.C.O.R.E. letter it matches.')}<p><b>These review lines are mixed up.</b> Tag each line with its S.C.O.R.E. letter.</p></div>${legend}
+     ${order.map(i=>`<div class="sortrow" data-i="${i}"><span class="line">“${esc(SORT[i].t)}”</span><div class="letters">${'SCORE'.split('').map(L=>`<button data-l="${L}" aria-pressed="false" aria-label="Tag as ${L}">${L}</button>`).join('')}</div><div class="why"></div></div>`).join('')}
+     <button class="btn" id="chk">Check my tags</button> <button class="btn ghost" id="mixup">Mix them up again</button><div id="res"></div>`;
+    $$('.sortrow',c).forEach(r=>$$('.letters button',r).forEach(b=>b.onclick=()=>{pick[r.dataset.i]=b.dataset.l;$$('.letters button',r).forEach(x=>x.setAttribute('aria-pressed',x===b));}));
+    $('#mixup',c).onclick=()=>{renderCriticApply.so=null;renderCriticApply(U,p);};
+    $('#chk',c).onclick=()=>{let n=0;$$('.sortrow',c).forEach(r=>{const i=+r.dataset.i,ok=pick[i]===SORT[i].a;if(ok)n++;r.className='sortrow '+(ok?'good':'bad');$('.why',r).textContent=ok?'✓ Correct':(pick[i]?`This is ${SORT[i].a}, not ${pick[i]}.`:'Pick a letter.');});
+      if(n===5){st.apply.sort=true;save();}
+      $('#res',c).innerHTML=`<p class="fb ${n===5?'good':'try'}" style="margin:.8rem 0 0"><b>${n} of 5 correct.</b>${n===5?'You know the S.C.O.R.E. order. Use it in Script Builder.':'Check the legend and try again.'}</p>`;};
+  }
+  if(tab==='spoil'){
+    const pick={};
+    c.innerHTML=`<div class="panel-intro">${sayBtn('Read each line. Is it a spoiler, or is it safe to say in a review?')}<p><b>Spoiler or safe?</b> Would this line ruin the movie for someone who hasn’t seen it?</p></div>
+     ${SPOIL.map((s,i)=>`<div class="sortrow" data-i="${i}"><span class="line">“${esc(s.t)}”</span><div class="letters" style="gap:.4rem"><button data-v="safe" aria-pressed="false" style="width:auto;padding:0 .8rem;font-size:1.1rem">Safe</button><button data-v="spoil" aria-pressed="false" style="width:auto;padding:0 .8rem;font-size:1.1rem">Spoiler</button></div><div class="why"></div></div>`).join('')}
+     <button class="btn" id="chk">Check my answers</button><div id="res"></div>`;
+    $$('.sortrow',c).forEach(r=>$$('button',r).forEach(b=>b.onclick=()=>{pick[r.dataset.i]=b.dataset.v;$$('button',r).forEach(x=>x.setAttribute('aria-pressed',x===b));}));
+    $('#chk',c).onclick=()=>{let n=0;$$('.sortrow',c).forEach(r=>{const i=+r.dataset.i,ok=pick[i]===SPOIL[i].a;if(ok)n++;r.className='sortrow '+(ok?'good':'bad');$('.why',r).textContent=(ok?'✓ ':'✗ ')+SPOIL[i].why;});
+      if(n===SPOIL.length){st.apply.spoil=true;save();}
+      $('#res',c).innerHTML=`<p class="fb ${n===SPOIL.length?'good':'try'}" style="margin:.8rem 0 0"><b>${n} of ${SPOIL.length} correct.</b>${n===SPOIL.length?'Spoiler-proof! Keep it that way in your own review.':'Read the reasons, then try again.'}</p>`;};
+  }
+  if(tab==='catch'){
+    c.innerHTML=`<div class="panel-intro">${sayBtn('Your teacher wrote this review of a made-up movie, Bobcat Blast-Off. Three lines have mistakes. Find them and name each problem.')}<p><b>Catch the Mistake.</b> This review of a made-up movie, <i>Bobcat Blast-Off</i>, has <b>three</b> mistakes. Mark each line.</p></div>
+     ${CATCH.map((s,i)=>`<div class="sortrow" data-i="${i}"><span class="line">${i+1}. “${esc(s.t)}”</span><select aria-label="What is this line?">${Object.entries(CATCHL).map(([k,l])=>`<option value="${k}">${l}</option>`).join('')}</select><div class="why"></div></div>`).join('')}
+     <button class="btn" id="chk">Check my edits</button><div id="res"></div>`;
+    $('#chk',c).onclick=()=>{let n=0;$$('.sortrow',c).forEach(r=>{const i=+r.dataset.i,v=$('select',r).value,ok=v===CATCH[i].a;if(ok)n++;r.className='sortrow '+(ok?'good':'bad');$('.why',r).textContent=(ok?'✓ ':'✗ ')+(ok?CATCHWHY[CATCH[i].a]:(CATCH[i].a==='ok'?'This line is fine.':'Look again. '+CATCHWHY[CATCH[i].a]));});
+      if(n===CATCH.length){st.apply.catch=true;save();}
+      $('#res',c).innerHTML=`<p class="fb ${n===CATCH.length?'good':'try'}" style="margin:.8rem 0 0"><b>${n} of ${CATCH.length} lines marked correctly.</b>${n===CATCH.length?'Sharp editing! Now rewrite line 4 with real evidence in your head.':'Fix the red lines and check again.'}</p>`;};
+  }
+  if(tab==='script'){
+    const sc=st.apply.scriptText||(st.apply.scriptText={title:'',S:'',C:'',O:'',R1:'',R2:'',E:''});
+    const F=[['S','Set the scene','“If you’ve ever wondered what toys do when we leave the room…”'],['C','Content (no spoilers!)','“This film follows ___ as they try to ___.”'],['O','Observe the craft','“The close-ups make us feel ___.”'],['R1','Reason 1 + evidence','“One reason is ___. For example, ___.”'],['R2','Reason 2 + evidence','“Another reason is ___. For example, ___.”'],['E','End with your verdict','“I give it ___ stars. Perfect for ___.”']];
+    c.innerHTML=`<div class="panel-intro">${sayBtn('Script Builder. Write your 60 second review one part at a time. The checklist updates as you type.')}<p><b>Script Builder.</b> Write your 60-second review one part at a time. The checklist updates as you type. <span class="muted">Minimum review: S + O + E.</span></p></div>
+     <div class="script-grid"><div>
+      <div class="scriptbox"><label for="sc-title">What I am reviewing (title + director)</label><input type="text" id="sc-title" data-f="title" value="${esc(sc.title)}" placeholder="Soar, directed by Alyce Tzue"></div>
+      ${F.map(([k,l,s])=>`<div class="scriptbox"><label for="sc-${k}"><b>${k[0]}</b>${l}</label><p class="starter">${s}</p><textarea id="sc-${k}" data-f="${k}" rows="2">${esc(sc[k])}</textarea></div>`).join('')}
+     </div><div class="sticky-sum" id="sum"></div></div>`;
+    const upd=()=>{
+      const full=[sc.S,sc.C,sc.O,sc.R1,sc.R2,sc.E].filter(Boolean).join(' '); const w=words(full); const sec=Math.round(w/2.4);
+      const checks=[
+        [!!sc.title.trim(),'Names the title (and director)'],
+        [words(sc.S)>=5,'Has a hook (S)'],
+        [words(sc.O)>=5&&CRAFT.test(sc.O),'Names a craft choice: camera, lighting, sound, editing, or acting (O)'],
+        [/because|for example|such as|when/i.test(sc.R1+' '+sc.R2),'Reasons use evidence (“for example,” “when,” “because”) (R)'],
+        [/\d|one|two|three|four|five|thumbs/i.test(sc.E),'Gives a rating (E)'],
+        [w>=10&&!/\b(ending|at the end|turns out|finally (dies|wins|loses))\b/i.test(full),'No spoiler words like “at the end” or “turns out”'],
+        [w>=10&&!/\b(ugly|stupid|dumb|trash|weird face)\b/i.test(full),'Follows the Critic Code (judges the work, not people)'],
+        [sec>=40&&sec<=75,'About 60 seconds long (100–180 words)']];
+      const done=checks.filter(x=>x[0]).length; if(done===checks.length&&!st.apply.script){st.apply.script=true;save();}
+      $('#sum',c).innerHTML=`<div class="timer" id="tmr">${w} words</div><p class="muted" style="margin:.1rem 0 .4rem">About ${sec} seconds when you read it out loud.</p>
+       <ul class="checks">${checks.map(([ok,t])=>`<li class="${ok?'yes':'no'}"><span class="ic">${ok?'✓':'○'}</span>${t}</li>`).join('')}</ul>
+       <p style="display:flex;flex-wrap:wrap;gap:.4rem"><button class="btn" id="practice">${canSpeak?'Read it to me':'Start 60-second timer'}</button><button class="btn ghost" id="cpy">Copy my script</button></p>
+       <p class="muted" style="font-size:.88rem">Recording tips: practice out loud once, light in front of you, camera at eye level, look into the lens.</p>`;
+      $('#cpy',c).onclick=()=>copyText(`${S.name?S.name+'\n':''}Review of: ${sc.title}\n\nS: ${sc.S}\nC: ${sc.C}\nO: ${sc.O}\nR: ${sc.R1}\nR: ${sc.R2}\nE: ${sc.E}`);
+      $('#practice',c).onclick=()=>{const t0=Date.now(); if(canSpeak) speak(full||'Write your script first.'); const el=$('#tmr',c); clearInterval(upd.h); upd.h=setInterval(()=>{const s=Math.round((Date.now()-t0)/1000); if(!document.body.contains(el)){clearInterval(upd.h);return;} el.textContent=`0:${String(Math.min(s,99)).padStart(2,'0')}`; if(s>=75){clearInterval(upd.h);}},250);};
+    };
+    $$('[data-f]',c).forEach(t=>t.oninput=()=>{sc[t.dataset.f]=t.value;save();clearInterval(upd.h);upd();});
+    upd();
+  }
+}
+
+/* ---------- Score Card ---------- */
+const CONF_TXT={g:'I’ve got it',y:'Getting there',r:'I need help'};
+function renderCard(){
+  $('#stuName').value=S.name||''; $('#cardDate').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+  const sc=U=>{const st=S[U.id]; const t=k=>U.quiz[k].filter(q=>st.quiz[q.id]?.first).length;
+    const applyN=U.id==='shot'?(st.apply.mixer?1:0):['sort','spoil','catch','script'].filter(k=>st.apply[k]).length;
+    const applyT=U.id==='shot'?1:4;
+    const deep=U.deeper.filter(d=>words(st.deeper[d.id]||'')>=25).length;
+    const names=U.id==='shot'?['Rookie Detective','Lead Detective','Chief Detective']:['Junior Critic','Staff Critic','Senior Critic'];
+    const b=[t('required')>=5, t('stretch')>=4&&applyN>=1, t('advanced')>=2&&applyN>=applyT&&deep>=1];
+    const how=['Score 5+ on Required','Score 4+ on Stretch and finish one Apply It activity','Score 2+ on Advanced, finish all Apply It, and write one Go Deeper response (25+ words)'];
+    return `<div class="sc" style="--tc:${U.color}"><h2>${U.title}</h2>
+     <div class="badges">${names.map((n,i)=>`<span class="badge ${b[i]?'got':''}" title="${how[i]}"><i>${b[i]?'★':'☆'}</i>${n}</span>`).join('')}</div>
+     <table><tr><td>Cards flipped</td><td>${st.flipped.length} / ${U.cards.length}</td></tr>
+     <tr><td>Match It best time</td><td>${st.matchBest?st.matchBest+' s':'not yet'}</td></tr>
+     <tr><td>Required (first try)</td><td>${t('required')} / ${U.quiz.required.length}</td></tr>
+     <tr><td>Stretch Challenge (first try)</td><td>${t('stretch')} / ${U.quiz.stretch.length}</td></tr>
+     <tr><td>Advanced Challenge (first try)</td><td>${t('advanced')} / ${U.quiz.advanced.length}</td></tr>
+     <tr><td>Apply It finished</td><td>${applyN} / ${applyT}${U.id==='shot'&&st.apply.mixer?` (${st.apply.mixer} plan${st.apply.mixer>1?'s':''})`:''}</td></tr>
+     <tr><td>Go Deeper responses</td><td>${deep} / ${U.deeper.length}</td></tr></table>
+     <h3>How sure am I?</h3>
+     ${U.ican.map((t,i)=>`<div class="conf"><span>${esc(t)}</span><div class="lights" role="group" aria-label="My confidence">${['g','y','r'].map(c=>`<button class="${c}" data-u="${U.id}" data-i="${i}" data-c="${c}" aria-pressed="${st.conf[i]===c}" title="${CONF_TXT[c]}" aria-label="${CONF_TXT[c]}"></button>`).join('')}</div></div>`).join('')}
+     <p class="muted" style="font-size:.85rem;margin-top:.6rem">Green: I’ve got it. Yellow: Getting there. Red: I need help.</p></div>`;};
+  $('#scGrid').innerHTML=sc(SHOT)+sc(CRITIC);
+  $$('.lights button').forEach(b=>b.onclick=()=>{S[b.dataset.u].conf[b.dataset.i]=b.dataset.c;save();renderCard();});
+}
+$('#stuName').oninput=e=>{S.name=e.target.value;save();};
+$('#resetAll').onclick=()=>{if(confirm('Clear all your answers, scores, and writing on this device? This cannot be undone.')){const keep={es:S.es,big:S.big};S={name:'',...keep,shot:blankUnit(),critic:blankUnit()};save();renderCard();toast('Cleared');}};
+
+/* ---------- home reel, toggles, routing ---------- */
+$('#homeReel').innerHTML=['EWS','WS','MS','CU','ECU'].map(k=>`<div>${frameSVG(k)}<span>${k}</span></div>`).join('');
+function applyToggles(){document.body.classList.toggle('es',!!S.es);document.body.classList.toggle('big',!!S.big);$('#tEs').setAttribute('aria-pressed',!!S.es);$('#tBig').setAttribute('aria-pressed',!!S.big);}
+$('#tEs').onclick=()=>{S.es=!S.es;save();applyToggles();};
+$('#tBig').onclick=()=>{S.big=!S.big;save();applyToggles();};
+applyToggles();
+const VIEWS=['home','shot','critic','card'];
+function route(){
+  let v=(location.hash||'').slice(1); if(!VIEWS.includes(v)) v='home';
+  cancelAnimationFrame(raf); if(canSpeak) speechSynthesis.cancel();
+  $$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));
+  $$('.tabs a').forEach(a=>{if(a.getAttribute('href')==='#'+v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+  if(v==='shot'||v==='critic') renderUnit(UNITS[v]);
+  if(v==='card') renderCard();
+  window.scrollTo(0,0);
+}
+addEventListener('hashchange',route); route();
+</script>
+</body>
+</html>
